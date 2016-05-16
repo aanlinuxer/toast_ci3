@@ -8,13 +8,13 @@
  * 
  * RESERVED TEST FUNCTION NAMES: test_index, test_show_results, test__[*]
  * 
- * @package			CodeIgniter
+ * @package		CodeIgniter
  * @subpackage	Controllers
- * @category		Unit Testing
- * @based on		Brilliant original code by user t'mo from the CI forums
- * @based on		Assert functions by user 'redguy' from the CI forums
- * @license			Creative Commons Attribution 3.0 (cc) 2009 Jens Roland
- * @author			Jens Roland (mail@jensroland.com)
+ * @category	Unit Testing
+ * @based on	Brilliant original code by user t'mo from the CI forums
+ * @based on	Assert functions by user 'redguy' from the CI forums
+ * @license		Creative Commons Attribution 3.0 (cc) 2009 Jens Roland
+ * @author		Jens Roland (mail@jensroland.com)
  * 
  */
 
