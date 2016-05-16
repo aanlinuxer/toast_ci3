@@ -3,6 +3,9 @@
 TOAST CI3 hanya sedikit modifikasi agar TOAST dapat berjalan di CI 3.0x. 
 Credit sebenarnya untuk mail@jensroland.com TOAST : http://jensroland.com/projects/toast/
 
+Library ini menggunakan Unit Testing built-in dari CI 3.0x. 
+Jika Anda lebih memimilih PHPUnit, sebaiknya menggunakan https://github.com/kenjis/ci-phpunit-test
+
 
 ## Instalasi
 
@@ -83,6 +86,6 @@ class Example_tests extends Toast
 
 }
 
-// End of file example_test.php */
+// End of file Example_test.php */
 // Location: ./system/application/controllers/test/example_test.php */
 ```
