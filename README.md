@@ -21,6 +21,9 @@ Atau, dengan mod_rewrite http://localhost/nama_proyek/test/toast_all
 
 ## Contoh
 
+![Example Output](/test_example.png "Example Output")
+
+
 ```php
 <?php
 require_once(APPPATH . '/controllers/test/Toast.php');
