@@ -33,14 +33,11 @@ class Example_tests extends Toast
 
 	function test_that_fails()
 	{
-		$a = true;
-		$b = $a;
+		$a = 1;
 
 		// You can test multiple assertions / variables in one function:
 
-		$this->_assert_true($a); // true
-		$this->_assert_false($b); // false
-		$this->_assert_equals($a, $b); // true
+		$this->_assert_true($a); // fail
 
 		// Since one of the assertions failed, this test case will fail
 	}
