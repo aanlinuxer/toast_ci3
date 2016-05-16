@@ -63,4 +63,4 @@ class Example_tests extends Toast
 }
 
 // End of file example_test.php */
-// Location: ./application/controllers/test/example_test.php */
+// Location: ./application/controllers/test/Example_test.php */
