@@ -35,6 +35,7 @@ abstract class Toast extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->library('unit_test');
+		$this->unit->use_strict(TRUE);
 		$this->modelname = $name;
 		$this->modelname_short = basename($name, '.php');
 		$this->messages = array();
@@ -174,24 +175,6 @@ abstract class Toast extends CI_Controller
 	}
 	
 	function _assert_true($assertion) {
-		if($assertion) {
-			return TRUE;
-		} else {
-			$this->asserts = FALSE;
-			return FALSE;
-		}
-	}
-	
-	function _assert_false($assertion) {
-		if($assertion) {
-			$this->asserts = FALSE;
-			return FALSE;
-		} else {
-			return TRUE;
-		}
-	}
-	
-	function _assert_true_strict($assertion) {
 		if($assertion === TRUE) {
 			return TRUE;
 		} else {
@@ -200,17 +183,17 @@ abstract class Toast extends CI_Controller
 		}
 	}
 	
-	function _assert_false_strict($assertion) {
+	function _assert_false($assertion) {
 		if($assertion === FALSE) {
-			return TRUE;
-		} else {
 			$this->asserts = FALSE;
 			return FALSE;
+		} else {
+			return TRUE;
 		}
 	}
 	
 	function _assert_equals($base, $check) {
-		if($base == $check) {
+		if($base === $check) {
 			return TRUE;
 		} else {
 			$this->asserts = FALSE;
@@ -219,24 +202,6 @@ abstract class Toast extends CI_Controller
 	}
 	
 	function _assert_not_equals($base, $check) {
-		if($base != $check) {
-			return TRUE;
-		} else {
-			$this->asserts = FALSE;
-			return FALSE;
-		}
-	}
-
-	function _assert_equals_strict($base, $check) {
-		if($base === $check) {
-			return TRUE;
-		} else {
-			$this->asserts = FALSE;
-			return FALSE;
-		}
-	}
-
-	function _assert_not_equals_strict($base, $check) {
 		if($base !== $check) {
 			return TRUE;
 		} else {
