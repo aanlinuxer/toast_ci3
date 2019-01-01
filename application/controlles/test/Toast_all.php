@@ -20,19 +20,19 @@ class Toast_all extends CI_Controller
 {
     // The folder INSIDE /controllers/ where the test classes are located
     // TODO: autoset
-    var $test_dir = '/test/';
+    protected $test_dir = '/test/';
 
     // Files to skip (ie. non-test classes) inside the test dir
-    var $skip = array(
+    protected $skip = array(
         'Toast.php',
         'Toast_all.php'
     );
 
     // CURL multithreaded mode (only set to true if you are sure your tests
     // don't conflict when run in parallel)
-    var $multithreaded = false;
+    protected $multithreaded = false;
 
-    function Toast_all()
+    public function __construct()
     {
         parent::__construct();
 
@@ -43,7 +43,7 @@ class Toast_all extends CI_Controller
         }
     }
 
-    function index()
+    public function index()
     {
         $output = '';
 
@@ -83,7 +83,7 @@ class Toast_all extends CI_Controller
      *
      * @return array of filenames (without '.php' extensions)
      */
-    function _get_test_files()
+    public function _get_test_files()
     {
         $files = array();
 
@@ -107,7 +107,7 @@ class Toast_all extends CI_Controller
      * @return string containing the (concatenated) HTML documents
      * @param array $urls array of fully qualified URLs
      */
-    function _curl_get($urls)
+    public function _curl_get($urls)
     {
         $html_str = '';
         foreach ($urls as $url)
@@ -127,7 +127,7 @@ class Toast_all extends CI_Controller
      * @return string containing the (concatenated) HTML documents
      * @param array $urls array of fully qualified URLs
      */
-    function _curl_get_multi($urls)
+    public function _curl_get_multi($urls)
     {
         $html_str = '';
         $url_count = count($urls);

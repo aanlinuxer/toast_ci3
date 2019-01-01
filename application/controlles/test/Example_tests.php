@@ -1,41 +1,42 @@
 <?php
+
 require_once(APPPATH . '/controllers/test/Toast.php');
 
 class Example_tests extends Toast
 {
-    function __construct()
+    public function __construct()
     {
         parent::__construct(__FILE__);
         // Load any models, libraries etc. you need here
     }
 
     /**
-     * OPTIONAL; Anything in this function will be run before each test
+     * OPTIONAL; Anything in this public function will be run before each test
      * Good for doing cleanup: resetting sessions, renewing objects, etc.
      */
-    function _pre() {}
+    public function _pre() {}
 
     /**
-     * OPTIONAL; Anything in this function will be run after each test
+     * OPTIONAL; Anything in this public function will be run after each test
      * I use it for setting $this->message = $this->My_model->getError();
      */
-    function _post() {}
+    public function _post() {}
 
 
     /* TESTS BELOW */
 
-    function test_simple_addition()
+    public function test_simple_addition()
     {
         $var = 2 + 2;
         $this->_assert_equals($var, 4);
     }
 
 
-    function test_that_fails()
+    public function test_that_fails()
     {
         $a = 1;
 
-        // You can test multiple assertions / variables in one function:
+        // You can test multiple assertions / variables in one public function:
 
         $this->_assert_true($a); // fail
 
@@ -43,7 +44,7 @@ class Example_tests extends Toast
     }
 
 
-    function test_or_operator()
+    public function test_or_operator()
     {
         $a = true;
         $b = false;

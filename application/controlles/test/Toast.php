@@ -12,7 +12,7 @@
  * @subpackage  Controllers
  * @category    Unit Testing
  * @based on    Brilliant original code by user t'mo from the CI forums
- * @based on    Assert functions by user 'redguy' from the CI forums
+ * @based on    Assert public functions by user 'redguy' from the CI forums
  * @license     Creative Commons Attribution 3.0 (cc) 2009 Jens Roland
  * @author      Jens Roland (mail@jensroland.com)
  *
@@ -23,15 +23,15 @@ abstract class Toast extends CI_Controller
 {
     // The folder INSIDE /controllers/ where the test classes are located
     // TODO: autoset
-    var $test_dir = '/test/';
+    protected $test_dir = '/test/';
 
-    var $modelname;
-    var $modelname_short;
-    var $message;
-    var $messages;
-    var $asserts;
+    protected $modelname;
+    protected $modelname_short;
+    protected $message;
+    protected $messages;
+    protected $asserts;
 
-    function __construct($name)
+    public function __construct($name)
     {
         parent::__construct();
 
@@ -48,12 +48,12 @@ abstract class Toast extends CI_Controller
         $this->messages = array();
     }
 
-    function index()
+    public function index()
     {
         $this->_show_all();
     }
 
-    function show_results()
+    public function show_results()
     {
         $this->_run_all();
         $data['modelname'] = $this->modelname;
@@ -62,7 +62,7 @@ abstract class Toast extends CI_Controller
         $this->load->view('test/results', $data);
     }
 
-    function _show_all()
+    public function _show_all()
     {
         $this->_run_all();
         $data['modelname'] = $this->modelname;
@@ -74,7 +74,7 @@ abstract class Toast extends CI_Controller
         $this->load->view('test/footer');
     }
 
-    function _show($method)
+    public function _show($method)
     {
         $this->_run($method);
         $data['modelname'] = $this->modelname;
@@ -86,7 +86,7 @@ abstract class Toast extends CI_Controller
         $this->load->view('test/footer');
     }
 
-    function _run_all()
+    public function _run_all()
     {
         foreach ($this->_get_test_methods() as $method)
         {
@@ -94,7 +94,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _run($method)
+    public function _run($method)
     {
         // Reset message from test
         $this->message = '';
@@ -123,7 +123,7 @@ abstract class Toast extends CI_Controller
         $this->unit->run($this->asserts, TRUE, $desc);
     }
 
-    function _get_test_methods()
+    public function _get_test_methods()
     {
         $methods = get_class_methods($this);
         $testMethods = array();
@@ -136,17 +136,17 @@ abstract class Toast extends CI_Controller
     }
 
     /**
-     * Remap function (CI magic function)
+     * Remap public function (CI magic public function)
      *
-     * Reroutes any request that matches a test function in the subclass
-     * to the _show() function.
+     * Reroutes any request that matches a test public function in the subclass
+     * to the _show() public function.
      *
-     * This makes it possible to request /my_test_class/my_test_function
-     * to test just that single function, and /my_test_class to test all the
-     * functions in the class.
+     * This makes it possible to request /my_test_class/my_test_public function
+     * to test just that single public function, and /my_test_class to test all the
+     * public functions in the class.
      *
      */
-    function _remap($method)
+    public function _remap($method)
     {
         $test_name = 'test_' . $method;
         if (method_exists($this, $test_name))
@@ -161,19 +161,19 @@ abstract class Toast extends CI_Controller
 
 
     /**
-     * Cleanup function that is run before each test case
+     * Cleanup public function that is run before each test case
      * Override this method in test classes!
      */
-    function _pre() { }
+    public function _pre() { }
 
     /**
-     * Cleanup function that is run after each test case
+     * Cleanup public function that is run after each test case
      * Override this method in test classes!
      */
-    function _post() { }
+    public function _post() { }
 
 
-    function _fail($message = null) {
+    public function _fail($message = null) {
         $this->asserts = FALSE;
         if ($message != null) {
             $this->message = $message;
@@ -181,7 +181,7 @@ abstract class Toast extends CI_Controller
         return FALSE;
     }
 
-    function _assert_true($assertion) {
+    public function _assert_true($assertion) {
         if($assertion === TRUE) {
             return TRUE;
         } else {
@@ -190,7 +190,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _assert_false($assertion) {
+    public function _assert_false($assertion) {
         if($assertion === FALSE) {
             $this->asserts = FALSE;
             return FALSE;
@@ -199,7 +199,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _assert_equals($base, $check) {
+    public function _assert_equals($base, $check) {
         if($base === $check) {
             return TRUE;
         } else {
@@ -208,7 +208,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _assert_not_equals($base, $check) {
+    public function _assert_not_equals($base, $check) {
         if($base !== $check) {
             return TRUE;
         } else {
@@ -217,7 +217,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _assert_empty($assertion) {
+    public function _assert_empty($assertion) {
         if(empty($assertion)) {
             return TRUE;
         } else {
@@ -226,7 +226,7 @@ abstract class Toast extends CI_Controller
         }
     }
 
-    function _assert_not_empty($assertion) {
+    public function _assert_not_empty($assertion) {
         if(!empty($assertion)) {
             return TRUE;
         } else {
