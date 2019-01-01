@@ -10,6 +10,13 @@ Jika Anda lebih memimilih PHPUnit, sebaiknya menggunakan https://github.com/kenj
 ## Instalasi
 
 Copy folder application/controllers/test ke folder application/controllers proyek CI 3 Anda.
+Ubah ENVIRONMENT menjadi `testing` di file `index.php`
+
+```php
+//...
+define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing');
+//...
+```
 
 
 ## Penggunaan
